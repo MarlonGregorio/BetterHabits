@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="ion-text-center main_text" *ngIf="habitList.length>0 && !editing">
+    Habits
+  </h2>
+  <h2 *ngIf="habitList.length==0" class="ion-text-center main_text">
+    <span *ngIf="empty_message.length > 0">{{empty_message}}</span>
+    <span *ngIf="empty_message.length == 0"><ion-spinner></ion-spinner></span>
+  </h2>
+  <div *ngFor="let habit of habitList">
+    <ion-card button (click)="openModal(habit)" *ngIf="!habit.editing">
+      <ion-card-content>
+        <span class="alignleft">
+          <h2 class="black_text">{{habit.title}}</h2>
+          <p>{{habit.subtitle}}</p>
+        </span>
+        <ion-chip class="alignright">
+          <ion-label>Tasks: {{habit.task_count}}</ion-label>
+        </ion-chip>
+        <br style="clear: both;" />
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="habit.editing">
+      <ion-card-content *ngIf="habit.editing">
+        <ion-item>
+          <ion-input [(ngModel)]="habit.title" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="habit.subtitle" placeholder="Subtitle"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-buttons>
+        &nbsp;&nbsp;
+        <ion-button (click)="saveHabit(habit)">
+          <fa-icon [icon]="['far', 'save']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="cancelHabit()">
+          <fa-icon [icon]="['fas', 'ban']" class="card_icon"></fa-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addHabit()">
+      <fa-icon [icon]="['fas', 'plus']" class="card_icon"></fa-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

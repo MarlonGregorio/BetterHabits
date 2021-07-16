@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "betterhabits",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

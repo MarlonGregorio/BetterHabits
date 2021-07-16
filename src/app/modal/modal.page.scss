@@ -1,0 +1,38 @@
+ion-header{
+    --ion-background-color:#b0f3f1;
+}
+
+ion-item{
+    --background: rgba(0,0,0,0);
+}
+
+.main_text { 
+    color: #747474;
+}
+
+.sub_text { 
+    color: #747474;
+    font-size: medium;
+}
+
+.grey_text { 
+    color: #747474;
+}
+
+.fab_left{
+    padding-left: 10px;
+    padding-bottom: 50px;
+}
+
+.color_one{
+    --background: #747474;
+}
+
+.color_two{
+    --background: #f3b0ca;
+}
+
+.fab_right{
+    padding-right: 0px;
+    padding-bottom: 50px;
+}

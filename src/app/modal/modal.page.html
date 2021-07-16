@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title class="main_text">{{title}}</ion-title>
+      <ion-title class="sub_text">{{subtitle}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <fa-icon [icon]="['fas', 'ellipsis-v']" class="grey_text"></fa-icon>
+        </ion-button>
+        &nbsp;
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <h2 *ngIf="taskList.length==0" class="ion-text-center main_text">
+      <span *ngIf="empty_message.length > 0">{{empty_message}}</span>
+      <span *ngIf="empty_message.length == 0"><ion-spinner></ion-spinner></span>
+    </h2>
+    <h2 *ngIf="taskList.length > 0 && !editing" class="ion-text-center main_text">
+      All tasks
+    </h2>
+    <ion-card *ngFor="let task of taskList">
+      <ion-card-header *ngIf="!task.editing">
+        <ion-card-subtitle>
+          <span class="alignleft">{{formatHour(task.time)}}</span>
+          <span class="alignright">{{task.length}}</span>
+        </ion-card-subtitle>
+        <br />
+        <ion-card-title style="clear: both;">{{task.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="!task.editing">
+        {{task.subtitle}}
+      </ion-card-content>
+      <ion-buttons *ngIf="!task.editing">
+        &nbsp;&nbsp;
+        <ion-button (click)="completeTask(task)">
+          <fa-icon [icon]="['far', 'check-square']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="snoozeTask(task)">
+          <fa-icon [icon]="['fas', 'clock']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="editTask(task)">
+          <fa-icon [icon]="['fas', 'edit']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="deleteTask(task)">
+          <fa-icon [icon]="['fas', 'trash-alt']" class="card_icon"></fa-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-card-content *ngIf="task.editing">
+        <ion-item>
+          <ion-input [(ngModel)]="task.title" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="task.subtitle" placeholder="Subtitle"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime display-timezone="utc" placeholder="Select Date" min="2021" max="2025" [(ngModel)]="task.date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Start Time </ion-label>
+          <ion-datetime display-timezone="utc" display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="task.time"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Duration</ion-label>
+          <ion-select value="1hr" [(ngModel)]="task.length">
+            <ion-select-option value="5min">5min</ion-select-option>
+            <ion-select-option value="10min">10min</ion-select-option>
+            <ion-select-option value="15min">15min</ion-select-option>
+            <ion-select-option value="30min">30min</ion-select-option>
+            <ion-select-option value="45min">45min</ion-select-option>
+            <ion-select-option value="1hr">1hr</ion-select-option>
+            <ion-select-option value="1.5hr">1.5hr</ion-select-option>
+            <ion-select-option value="2hr">2hr</ion-select-option>
+            <ion-select-option value="3hr">3hr</ion-select-option>
+            <ion-select-option value="5hr">5hr</ion-select-option>
+            <ion-select-option value="12hr">12hr</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Repeat</ion-label>
+          <ion-select interface="popover" [(ngModel)]="task.repeat" multiple="true">
+            <ion-select-option value="mon">Mon</ion-select-option>
+            <ion-select-option value="tue">Tue</ion-select-option>
+            <ion-select-option value="wed">Wed</ion-select-option>
+            <ion-select-option value="thur">Thur</ion-select-option>
+            <ion-select-option value="fri">Fri</ion-select-option>
+            <ion-select-option value="sat">Sat</ion-select-option>
+            <ion-select-option value="sun">Sun</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+      <ion-buttons *ngIf="task.editing">
+        &nbsp;&nbsp;
+        <ion-button (click)="saveTask(task)">
+          <fa-icon [icon]="['far', 'save']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="cancelTask(task)">
+          <fa-icon [icon]="['fas', 'ban']" class="card_icon"></fa-icon>
+        </ion-button>
+        <ion-button (click)="deleteTask(task)">
+          <fa-icon [icon]="['fas', 'trash-alt']" class="card_icon"></fa-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="begin" slot="fixed" class="fab_left">
+      <ion-fab-button (click)="closeModal()" class="color_one">
+        <fa-icon [icon]="['fas', 'arrow-left']" class="card_icon"></fa-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab_right">
+      <ion-fab-button (click)="addTask()" class="color_two">
+        <fa-icon [icon]="['fas', 'plus']" class="card_icon"></fa-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+  

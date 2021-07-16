@@ -1,0 +1,25 @@
+ion-button{
+    text-transform:none;
+}
+
+ion-card{
+    --background: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+}
+
+ion-item{
+    --background: linear-gradient(315deg, #d7e1ec 0%, #ffffff 74%);
+    color: #747474;
+}
+
+ion-toggle{
+    padding-right: 0px;
+}
+
+.main_text { 
+    font-family: Pacifico-Regular;
+    color: #747474;
+}
+
+.sub_text{
+    color: #747474;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "betterhabits",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

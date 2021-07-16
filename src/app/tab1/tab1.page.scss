@@ -1,0 +1,32 @@
+ion-item{
+    --background: rgba(0,0,0,0);
+}
+
+ion-spinner{
+    color: #747474;
+}
+
+ion-fab-button{
+    --background: #b0d4f3;
+}
+
+ion-segment{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+ion-segment-button{
+    text-transform:none;
+}
+
+.main_text { 
+    color: #747474;
+}
+
+.title_button{
+    --background: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%);
+    margin: 0;
+    left: 50%;
+    -ms-transform: translateX(+50%);
+    transform: translateX(+50%);
+}

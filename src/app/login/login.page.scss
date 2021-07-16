@@ -1,0 +1,29 @@
+ion-content{
+    --ion-background-color:linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%);
+}
+
+ion-card{
+    --background: #f4f5f8;
+}
+
+ion-button{
+    text-transform:none;
+}
+
+.text-grey{
+    color: #acacac;
+}
+
+.text-red{
+    color: #eb445a;
+}
+
+.main_text { 
+    font-family: Pacifico-Regular;
+    font-size: xx-large;
+    color: #747474;
+}
+
+.text_button{
+    cursor: pointer;
+}

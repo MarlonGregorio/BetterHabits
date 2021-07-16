@@ -1,0 +1,33 @@
+<ion-content>
+  <br><br>
+  <ion-col>
+    <div class="ion-text-center main_text">
+      BetterHabits
+    </div>
+  </ion-col>
+  <br><br><br><br>
+  <ion-card>
+    <ion-card-content>
+      <ion-item color="light">
+        <fa-icon icon="envelope" class = "text-grey"></fa-icon>&nbsp;
+        <ion-input [(ngModel)] = "user.email" placeholder="Email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item color="light">
+        <fa-icon icon="lock" class = "text-grey"></fa-icon>&nbsp;
+        <ion-input [(ngModel)] = "user.password" placeholder="Password" type="password"></ion-input>
+      </ion-item>
+      <p class = "text-red">{{user.error_log}}</p>
+      <br>
+      <ion-button expand = "block" (click)="initLogin()"><fa-icon icon="sign-in-alt"></fa-icon>&nbsp;Login</ion-button>
+      <ion-button expand = "block"  (click)="initRegister()" color = "secondary"><fa-icon icon="user-plus"></fa-icon>&nbsp;Register</ion-button>
+      
+      <div class = "ion-text-right">
+        <p>
+          <fa-icon class = "text_button" icon="question-circle" (click)="initForgot()"></fa-icon>
+          <span class = "text_button" (click)="initForgot()">&nbsp;Forgot password</span>
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
